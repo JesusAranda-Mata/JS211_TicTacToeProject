@@ -45,31 +45,37 @@ const horizontalWin = () => {
   // Your code here to check for horizontal wins
   if((board[0][0]  == "X" && board[0][1] == "X" && board[0][2] == "X")
       || (board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")) {
-        return //checkForWin();
+        return true
       }
       else if((board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X")
       || (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O")){
-        return 
+        return true
       }
       else if((board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X")
       || (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")){
-        return 
+        return true
     } 
+    else {
+      return false
+    }
 }
 
 const verticalWin = () => {
   // Your code here to check for vertical wins
   if((board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X") 
     || (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O")){
-      return 
+      return true
     }
     else if((board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X") 
     || (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O")) {
-      return 
+      return true
     }
      else if((board[0][2] == "X" && board[1][2] == "X" && board[2][2] == "X") 
     || (board[0][2] == "O" && board[1][2] == "O" && board[2][2] == "O")){
-      return 
+      return true
+    }
+    else {
+      return false
     } 
 }
 
@@ -77,20 +83,24 @@ const diagonalWin = () => {
   // Your code here to check for diagonal wins
   if((board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X") 
         || (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O")) {
-      return //checkForWin();
+      return true
     } 
     else if((board[0][2] == "X" && board[1][1] == "X" && board[2][0] == "X") 
     || (board[0][2] == "O" && board[1][1] == "O" && board[2][0] == "O")) {
-      return //checkForWin();
+      return true
+    }
+    else {
+      return false
     }
 }
 
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
   if(horizontalWin() || verticalWin() || diagonalWin()) {
-    window.alert(`Player ${playerTurn} won!`).confirm
+      return true
   } else {
     playerChoice()
+    return false
   }
 }
 
@@ -98,8 +108,12 @@ const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
   // then check for a win
   board[row][column] = playerTurn;
-  playerChoice();
-  checkForWin();
+  //playerChoice();
+  if (checkForWin()){
+    return true
+  }else {
+    return false
+  }
 }
 
 const getPrompt = () => {
@@ -107,8 +121,12 @@ const getPrompt = () => {
   console.log("It's Player " + playerTurn + "'s turn.");
   rl.question('row: ', (row) => {
     rl.question('column: ', (column) => {
-      ticTacToe(row, column);
+      if(ticTacToe(row, column)){
+        console.log("Winner " + playerTurn)
+        return 
+      } else {
       getPrompt();
+      }
     });
   });
 }
