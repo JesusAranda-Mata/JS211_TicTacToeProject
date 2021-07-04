@@ -31,7 +31,6 @@ const addMarker = (id) => {
   // @TODO, Mix & Match. 
   // You will need the following pieces:
   document.getElementById(id).innerHTML = currentMarker
-  document.getElementById("player").innerHTML = "Player " + currentMarker
   // = currentMarker
   // .getElementById(id)
   // document
@@ -124,6 +123,7 @@ const diagonalWin = () => {
 const changeMarker = () => {
   // ternary operator: if it's an X make it an O, if O make it an X
   currentMarker = currentMarker === "X" ? "O" : "X"
+  document.getElementById("player").innerHTML = "It is your turn player " + currentMarker + "!"
 }
 
 const resetBoard = () => {
