@@ -31,6 +31,7 @@ const addMarker = (id) => {
   // @TODO, Mix & Match. 
   // You will need the following pieces:
   document.getElementById(id).innerHTML = currentMarker
+  document.getElementById("player").innerHTML = "Player " + currentMarker
   // = currentMarker
   // .getElementById(id)
   // document
@@ -148,7 +149,7 @@ const resetBoard = () => {
 
 // **BONUSES**
 
-// 1. Display the current player's turn
+// 1. Display the current player's turn ---> Done
 // 2. Count number of wins for each player and display them
 // 3. Reset the number of wins
 // 4. Clear the board on alert window dismissal --> done
