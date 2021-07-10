@@ -23,6 +23,7 @@ const handleClick = (element) => {
     addMarker(element.id)
     updateBoard(element.id)
     checkForWin()
+    numering()
   }
 }
 
@@ -59,7 +60,7 @@ const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
     // **BONUS** you could make the dismissal of this alert window reset the board...
     window.alert(`Player ${currentMarker} won!`)
-    resetBoard() 
+    resetBoard()
     return true 
   } else {
     // if no win, change the marker from X to O, or O to X for the next player.
@@ -123,7 +124,7 @@ const diagonalWin = () => {
 const changeMarker = () => {
   // ternary operator: if it's an X make it an O, if O make it an X
   currentMarker = currentMarker === "X" ? "O" : "X"
-  document.getElementById("player").innerHTML = "It is your turn player " + currentMarker + "!"
+  document.getElementById('player').innerHTML= `It is your turn player ${currentMarker}!`
 }
 
 const resetBoard = () => {
@@ -154,4 +155,19 @@ const resetBoard = () => {
 // 3. Reset the number of wins
 // 4. Clear the board on alert window dismissal --> done
 // 5. Add players names and display who wins, i.e. "Congrats Emily, you won with 0s!"
-
+let check = checkForWin();
+let text = ""
+let w = 0
+//This function will add a list item to a wins counter.
+const numering = () => {
+  
+  while(check = true){
+    text += `${currentMarker} wins counter`;
+    w++;
+  }
+    document.getElementById("wins").innerHTML = text;
+    console.log(text);
+}
+ 
+// let bs = numering();
+// console.log(bs);
